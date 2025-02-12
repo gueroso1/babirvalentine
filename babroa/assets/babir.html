@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Surpresa!</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Remove a barra de rolagem */
+        }
+        img {
+            position: absolute;
+            width: 200px; /* Tamanho das fotos */
+            display: none; /* Esconde as fotos inicialmente */
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const fotos = [
+            'Inday1.jpg', 'Inday2.jpg', 'Inday3.jpg',
+            'Inday4.jpg', 'Inday5.jpg', 'assets/Inday6.jpg',
+            'Inday7.jpg', 'Inday8.jpg', 'Inday9.jpg',
+            'Inday10.jpg'
+        ];
+
+        const cantos = [
+            { top: '0', left: '0' }, // Canto superior esquerdo
+            { top: '0', right: '0' }, // Canto superior direito
+            { bottom: '0', left: '0' }, // Canto inferior esquerdo
+            { bottom: '0', right: '0' } // Canto inferior direito
+        ];
+
+        let indiceFoto = 0;
+
+        function mostrarFoto() {
+            if (indiceFoto >= fotos.length) return; // Para após 10 fotos
+
+            const img = document.createElement('img');
+            img.src = fotos[indiceFoto];
+            img.style.display = 'block';
+
+            // Escolhe um canto aleatório
+            const canto = cantos[Math.floor(Math.random() * cantos.length)];
+            Object.assign(img.style, canto);
+
+            document.body.appendChild(img);
+
+            // Remove a foto após 2 segundos
+            setTimeout(() => {
+                img.remove();
+            }, 2000);
+
+            indiceFoto++;
+            setTimeout(mostrarFoto, 1000); // Mostra a próxima foto após 1 segundo
+        }
+
+        // Inicia o processo após 1 segundo
+        setTimeout(mostrarFoto, 1000);
+    </script>
+</body>
+</html>
