@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feliz Dia dos Namorados!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Importante para responsividade -->
+    <style>
+        body {
+            background: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .quadro {
+            background: white;
+            border: 10px solid hotpink;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 90%; /* Ocupa 90% da largura da tela */
+            max-width: 400px; /* Limita a largura máxima */
+        }
+        img {
+            width: 100%; /* Ocupa 100% da largura da div */
+            max-width: 300px; /* Limita o tamanho da imagem */
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 24px;
+            color: darkred;
+            margin-bottom: 20px;
+        }
+        #botaoSurpresa {
+            display: none;
+            background: green;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            width: 100%; /* Ocupa toda a largura da div */
+        }
+    </style>
+</head>
+<body>
+    <div class="quadro">
+        <img src="pikaLove.gif" alt="Pikachu Love">
+        <h1>I love u always, forever and after ♾️💖</h1>
+        <button id="botaoSurpresa" onclick="abrirBabir()">Click here</button>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById('botaoSurpresa').style.display = 'block';
+        }, 10000);
+
+        function abrirBabir() {
+            window.open('babir.html', '_blank');
+        }
+    </script>
+</body>
+</html>

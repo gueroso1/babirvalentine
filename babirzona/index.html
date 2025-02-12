@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dia dos Namorados</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Importante para responsividade -->
+    <style>
+        body {
+            background: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .quadro {
+            background: white;
+            border: 10px solid hotpink;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 90%; /* Ocupa 90% da largura da tela */
+            max-width: 400px; /* Limita a largura máxima */
+            transition: all 0.3s ease;
+        }
+        img {
+            width: 100%; /* Ocupa 100% da largura da div */
+            max-width: 300px; /* Limita o tamanho da imagem */
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .pergunta {
+            font-size: 24px;
+            color: darkred;
+            margin-bottom: 20px;
+        }
+        .botoes {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha */
+        }
+        #sim, #nao {
+            flex: 1; /* Faz os botões ocuparem espaço igual */
+            background: green;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #nao {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="quadro" id="quadro">
+        <img id="imagem" src="assets/togepiLove.gif" alt="Togepi Love">
+        <div class="pergunta">Will you be my Valentine? 💖</div>
+        <div class="botoes">
+            <button id="sim" onclick="aceitou()">Yes</button>
+            <button id="nao" onclick="troll()">No</button>
+        </div>
+    </div>
+
+    <script>
+        function troll() {
+            const simBtn = document.getElementById('sim');
+            const naoBtn = document.getElementById('nao');
+            const quadro = document.getElementById('quadro');
+            const imagem = document.getElementById('imagem');
+
+            simBtn.style.transform = "scale(1.1)";
+            simBtn.style.padding = "20px 40px";
+            naoBtn.style.transform = "scale(0.6)";
+            naoBtn.style.padding = "10px 20px";
+            quadro.style.padding = "30px";
+            quadro.style.transform = "scale(1.1)";
+            imagem.src = "assets/togepiAngry.gif";
+            simBtn.innerHTML = "OF COURSE YOU'LL";
+            naoBtn.innerHTML = "HAVE NO CHOICE 😈";
+        }
+
+        function aceitou() {
+            window.location.href = "assets/loveu.html";
+        }
+    </script>
+</body>
+</html>

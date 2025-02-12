@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Surprise!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade -->
+    <style>
+        body {
+            background: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .quadro {
+            background: white;
+            border: 10px solid hotpink;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 90%; /* Ocupa 90% da largura da tela */
+            max-width: 800px; /* Aumentei a largura máxima */
+        }
+        video {
+            width: 100%; /* O vídeo ocupa toda a largura da div */
+            border-radius: 10px;
+        }
+        #voltar {
+            background: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: auto; /* Largura automática (não ocupa toda a div) */
+            display: block; /* Centraliza o botão */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="quadro">
+        <video controls>
+            <source src="seu-video.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+        <button id="voltar" onclick="window.location.href = 'babir.html';">Back</button>
+    </div>
+</body>
+</html>
