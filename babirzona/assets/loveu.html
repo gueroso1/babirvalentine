@@ -55,13 +55,13 @@
     </div>
 
     <script>
-        setTimeout(() => {
-            document.getElementById('botaoSurpresa').style.display = 'block';
-        }, 10000);
+    setTimeout(() => {
+        document.getElementById('botaoSurpresa').style.display = 'block';
+    }, 10000);
 
-        function abrirBabir() {
-            window.open('babir.html', '_blank');
-        }
-    </script>
+    function abrirBabir() {
+        window.location.href = 'babir.html'; // Abre na mesma janela
+    }
+</script>
 </body>
 </html>

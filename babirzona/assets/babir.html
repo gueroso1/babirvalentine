@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Surprise!</title>
+    <title>Video Surprise!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade -->
     <style>
         body {
             background: pink;
             display: flex;
-            flex-direction: column; /* Alinha os itens verticalmente */
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -23,51 +22,15 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             width: 90%; /* Ocupa 90% da largura da tela */
             max-width: 800px; /* Aumentei a largura máxima */
-            position: relative; /* Para posicionar as fotos dentro da div */
-            overflow: hidden; /* Impede que as fotos saiam da div */
         }
-        .foto-container {
-            position: relative;
-            height: 600px; /* Aumentei a altura do container */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .foto-container img {
-            max-width: 100%; /* A imagem não ultrapassa a largura do container */
-            max-height: 100%; /* A imagem não ultrapassa a altura do container */
+        iframe {
+            width: 100%; /* O iframe ocupa toda a largura da div */
+            height: 400px; /* Altura do player */
             border-radius: 10px;
-            border: 3px solid hotpink;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Centraliza a imagem */
-            opacity: 0; /* Inicialmente invisível */
-            transition: opacity 0.5s ease; /* Transição suave */
-        }
-        .botoes {
-            display: flex;
-            gap: 20px; /* Espaço entre os botões */
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .botoes button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        #click {
-            background: hotpink; /* Cor rosa do botão "Click" */
-            color: white;
+            border: none; /* Remove a borda do iframe */
         }
         #voltar {
-            background: green; /* Cor verde do botão "Back" */
-            color: white;
-        }
-        #player {
-            background: hotpink;
+            background: green;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -84,142 +47,8 @@
 </head>
 <body>
     <div class="quadro">
-        <div class="foto-container" id="fotoContainer">
-            <!-- As fotos serão inseridas aqui pelo JavaScript -->
-        </div>
-        <div class="botoes">
-            <button id="voltar" onclick="window.location.href = '../index.html';">Back</button>
-            <button id="click" onclick="window.location.href = 'video.html';">Click</button>
-        </div>
+        <iframe src="https://drive.google.com/file/d/1iewLSSYvZ7jW_M-ukaxi9rTq6OthwJoL/preview" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+        <button id="voltar" onclick="window.location.href = 'babir.html';">Back</button>
     </div>
-
-    <!-- Botão de player abaixo da div -->
-    <button id="player">Play Music</button>
-
-    <!-- Elementos de áudio para as músicas -->
-    <audio id="musica1">
-        <source src="musica1.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <audio id="musica2">
-        <source src="musica2.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <audio id="musica3">
-        <source src="musica3.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <audio id="musica4">
-        <source src="musica4.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <audio id="musica5">
-        <source src="musica5.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <audio id="musica6">
-        <source src="musica6.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-    <audio id="musica7">
-        <source src="musica7.mp3" type="audio/mp3">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
-
-    <script>
-        // Gera os nomes das 100 fotos no formato "inday (1).jpg", "inday (2).jpg", etc.
-        const fotos = Array.from({ length: 100 }, (_, i) => `inday (${i + 1}).jpg`);
-
-        let indiceFoto = 0;
-        const fotoContainer = document.getElementById('fotoContainer');
-
-        // Função para tocar as músicas em sequência
-        const musicas = [
-            document.getElementById('musica1'),
-            document.getElementById('musica2'),
-            document.getElementById('musica3'),
-            document.getElementById('musica4'),
-            document.getElementById('musica5'),
-            document.getElementById('musica6'),
-            document.getElementById('musica7')
-        ];
-
-        let indiceMusica = 0;
-        let musicaTocando = false;
-
-        function tocarMusica() {
-            if (!musicaTocando) {
-                musicas[indiceMusica].play();
-                musicaTocando = true;
-                document.getElementById('player').textContent = 'Pause Music';
-            } else {
-                musicas[indiceMusica].pause();
-                musicaTocando = false;
-                document.getElementById('player').textContent = 'Play Music';
-            }
-        }
-
-        function proximaMusica() {
-            // Pausa a música atual
-            musicas[indiceMusica].pause();
-
-            // Avança para a próxima música
-            indiceMusica = (indiceMusica + 1) % musicas.length;
-
-            // Toca a próxima música
-            musicas[indiceMusica].play();
-        }
-
-        // Configura o evento de término da música
-        musicas.forEach(musica => {
-            musica.addEventListener('ended', proximaMusica);
-        });
-
-        // Configura o botão de player
-        document.getElementById('player').addEventListener('click', tocarMusica);
-
-        // Tenta tocar a primeira música automaticamente após 2 segundos
-        setTimeout(() => {
-            musicas[indiceMusica].play().then(() => {
-                musicaTocando = true;
-                document.getElementById('player').textContent = 'Pause Music';
-            }).catch(() => {
-                // Se o navegador bloquear a reprodução automática, exibe uma mensagem
-                console.log('Reprodução automática bloqueada. Clique em "Play Music" para iniciar.');
-            });
-        }, 2000);
-
-        function mostrarFoto() {
-            // Reinicia o índice se chegar ao final do array
-            if (indiceFoto >= fotos.length) {
-                indiceFoto = 0; // Volta para a primeira foto
-            }
-
-            const img = document.createElement('img');
-            img.src = fotos[indiceFoto];
-            fotoContainer.appendChild(img);
-
-            // Mostra a foto com transição suave
-            setTimeout(() => {
-                img.style.opacity = '1';
-            }, 10);
-
-            // Esconde a foto após 2 segundos
-            setTimeout(() => {
-                img.style.opacity = '0';
-            }, 2000);
-
-            // Remove a foto após a transição
-            setTimeout(() => {
-                img.remove();
-            }, 2500);
-
-            indiceFoto++;
-            setTimeout(mostrarFoto, 1000); // Mostra a próxima foto após 1 segundo
-        }
-
-        // Inicia o processo após 1 segundo
-        setTimeout(mostrarFoto, 1000);
-    </script>
 </body>
 </html>
